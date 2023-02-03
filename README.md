@@ -119,7 +119,7 @@ No requirements.
 | <a name="output_vm_zones"></a> [vm\_zones](#output\_vm\_zones) | map with key `Virtual Machine Id`, value `list of the Availability Zone` which the Virtual Machine should be allocated in. |
 
 ## Module Usage
-
+```terraform
 module "ubuntuservers" {
   source                           = "./virtual_machine"
   vm_hostname                      = "mylinuxvm"
@@ -171,3 +171,4 @@ module "windowsservers" {
   diagnostic_setting               = local.diagnostic_setting
   tags                             = local.extra_tags
 }
+```
