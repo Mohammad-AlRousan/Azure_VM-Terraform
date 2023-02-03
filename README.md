@@ -129,7 +129,7 @@ module "ubuntuservers" {
   admin_password                   = local.admin_password
   vm_os_simple                     = var.vm_os_simple_1
   public_ip_dns                    = ["ubuntusimplevmips-${random_id.ip_dns.hex}"]
-  vnet_subnet_id                   = lookup(module.vnet.subnet_map, "snet-appgateway")
+  vnet_subnet_id                   = lookup(module.vnet.subnet_map, "snet-jump")
   allocation_method                = "Static"
   public_ip_sku                    = "Standard"
   enable_accelerated_networking    = true
@@ -156,7 +156,7 @@ module "windowsservers" {
   location                         = local.location
   vm_hostname                      = "mywinvm"
   admin_password                   = local.admin_password
-  public_ip_dns                    = ["winterravmip", "winterravmip1"]
+  public_ip_dns                    = ["pip1", "pip2"]
   nb_public_ip                     = 1
   nb_instances                     = 1
   vm_os_publisher                  = "microsoftwindowsdesktop"
@@ -164,7 +164,7 @@ module "windowsservers" {
   vm_os_sku                        = "win11-21h2-pro"
   vm_size                          = "Standard_DS2_V2"
   boot_diagnostics                 = true
-  vnet_subnet_id                   = lookup(module.vnet.subnet_map, "snet-appgateway")
+  vnet_subnet_id                   = lookup(module.vnet.subnet_map, "snet-jump")
   recovery_vault_name              = module.backup.recovery_vault_name
   backup_policy_id                 = module.vm_backup_policy.vm_policy_id
   backup_vault_resource_group_name = module.backup_resource_group.resource_group.name
